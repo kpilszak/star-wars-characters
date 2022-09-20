@@ -31,4 +31,15 @@ export class StarWarsService {
     this.logService.wirteLog('Changed side of ' + charInfo.name + ', new side: ' + charInfo.side);
   }
 
+  addCharacter(name: string, side: string): void {
+    const position = this.characters.findIndex((char) => {
+      return char.name === name;
+    })
+    if (position !== -1) {
+      return;
+    }
+    const newCharacter = { name: name, side: side };
+    this.characters.push(newCharacter);
+  }
+
 }
